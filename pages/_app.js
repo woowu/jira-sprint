@@ -3,6 +3,7 @@ import Head from 'next/head'
 import React from 'react'
 
 export default class UDCSprint extends App {
+    /*
     static async getInitialProps({ Component, ctx }) {
         let pageProps = {}
 
@@ -11,6 +12,7 @@ export default class UDCSprint extends App {
 
         return { pageProps }
     }
+    */
 
     render() {
         const { Component, pageProps } = this.props
