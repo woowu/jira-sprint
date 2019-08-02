@@ -54,8 +54,13 @@ function draw(graph)
     console.log('** drawing', graph.issues);
     const width = 800;
     const height = 600;
-    const radius = 6;
     const fill = d3.scaleOrdinal(d3.schemeBrBG[11]);
+    const radius = 6;
+    /*
+    const radius = d3.scaleSqrt()
+        .range([5, 35])
+        .domain(d3.extent(graph.issues, i => i.storyPoints));
+    */
     fill.domain(d3.extent(graph.issues, i => i.assignee.key));
 
     const svg = d3.select(`#${issuesGraphId}`).append('svg')
@@ -78,8 +83,11 @@ function draw(graph)
         .data(graph.issues)
         .enter().append("circle")
         .attr("r", d => {
-            console.log('** draw r');
             return radius;
+            /*
+            console.log(radius(d.storyPoints));
+            return radius(d.storyPoints);
+            */
         })
         .style("fill", d => fill(d.assignee.key))
         .style("stroke", d => d3.rgb(fill(d.assignee.key)).darker());
