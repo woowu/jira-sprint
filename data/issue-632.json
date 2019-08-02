@@ -1,0 +1,692 @@
+{
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "fields": {
+        "aggregateprogress": {
+            "percent": 100,
+            "progress": 136800,
+            "total": 136800
+        },
+        "aggregatetimeestimate": 0,
+        "aggregatetimeoriginalestimate": null,
+        "aggregatetimespent": 136800,
+        "assignee": {
+            "active": true,
+            "avatarUrls": {
+                "16x16": "https://acsjira.honeywell.com/secure/useravatar?size=xsmall&ownerId=h191693&avatarId=63318",
+                "24x24": "https://acsjira.honeywell.com/secure/useravatar?size=small&ownerId=h191693&avatarId=63318",
+                "32x32": "https://acsjira.honeywell.com/secure/useravatar?size=medium&ownerId=h191693&avatarId=63318",
+                "48x48": "https://acsjira.honeywell.com/secure/useravatar?ownerId=h191693&avatarId=63318"
+            },
+            "displayName": "Qiuyun Wang",
+            "emailAddress": "Jeck.Wang@Honeywell.com",
+            "key": "h191693",
+            "name": "h191693",
+            "self": "https://acsjira.honeywell.com/rest/api/2/user?username=h191693",
+            "timeZone": "GMT"
+        },
+        "attachment": [],
+        "comment": {
+            "comments": [],
+            "maxResults": 0,
+            "startAt": 0,
+            "total": 0
+        },
+        "components": [],
+        "created": "2019-07-15T07:12:31.520+0000",
+        "creator": {
+            "active": true,
+            "avatarUrls": {
+                "16x16": "https://acsjira.honeywell.com/secure/useravatar?size=xsmall&avatarId=10932",
+                "24x24": "https://acsjira.honeywell.com/secure/useravatar?size=small&avatarId=10932",
+                "32x32": "https://acsjira.honeywell.com/secure/useravatar?size=medium&avatarId=10932",
+                "48x48": "https://acsjira.honeywell.com/secure/useravatar?avatarId=10932"
+            },
+            "displayName": "Tong (Billy) Li",
+            "emailAddress": "Tong.Li4@Honeywell.com",
+            "key": "h309462",
+            "name": "H309462",
+            "self": "https://acsjira.honeywell.com/rest/api/2/user?username=H309462",
+            "timeZone": "GMT"
+        },
+        "customfield_10033": null,
+        "customfield_10034": null,
+        "customfield_10326": null,
+        "customfield_10361": null,
+        "customfield_10524": "finished and test passed",
+        "customfield_10571": "h191693(h191693)",
+        "customfield_10572": "h191693(h191693)",
+        "customfield_10641": null,
+        "customfield_10648": null,
+        "customfield_10670": "-2147483648",
+        "customfield_11004": null,
+        "customfield_11070": "In Verification",
+        "customfield_11100": null,
+        "customfield_11211": null,
+        "customfield_11213": 8,
+        "customfield_11350": "0.0",
+        "customfield_11351": null,
+        "customfield_11440": null,
+        "customfield_11450": null,
+        "customfield_11480": null,
+        "customfield_11701": [
+            "com.atlassian.greenhopper.service.sprint.Sprint@76e3857b[id=52155,rapidViewId=10747,state=ACTIVE,name=Sprint 10 (7/19 - 8/1),startDate=2019-07-19T01:10:43.342Z,endDate=2019-08-01T11:10:00.000Z,completeDate=<null>,sequence=52155,goal=]"
+        ],
+        "customfield_11800": null,
+        "customfield_11901": "2019-08-01 05:43:33.956",
+        "customfield_11903": null,
+        "customfield_12300": null,
+        "customfield_12500": [],
+        "customfield_12600": [],
+        "customfield_12601": [],
+        "customfield_12602": [],
+        "customfield_12700": "<script type=\"text/javascript\">\r\nwindow.onload = function(){\r\n\r\n\t\tif ($(\"label[for='customfield_10524']\").length > 0)\r\n\t        var resolutionDescription = AJS.$(\"label[for='customfield_10524']\").parent();\r\n\t    else\r\n\t        var resolutionDescription = AJS.$(\"label[for='cbcustomfield_10524']\").parent().parent();\r\n\t    \r\n\t    if ($(\"label[for='customfield_10326']\").length > 0)\r\n\t        var decisionRationale = AJS.$(\"label[for='customfield_10326']\").parent();\r\n\t    else\r\n\t        var decisionRationale = AJS.$(\"label[for='cbcustomfield_10326']\").parent().parent();\r\n\r\n        var duplicateIssues = AJS.$('#customfield_11450').parent();\r\n                \r\n                               \r\n                //Capturing the value of resolution at the time of loading the page. The value will always be 1 if screen is loading for the first time\r\n\t\t//as default value is 'Fixed'. If it is loading after a failed attempt, then the value will be different.\r\n                var resolutionValue = AJS.$('#resolution').val();\r\n                // Need to hide all resolution values other than 'Fixed' and 'Won't Fix'\r\n\t\t                 \r\n\t\t                AJS.$(\"#resolution option[value='5']\").remove();  // Hide \"Cannot Reproduce\"  \r\n\t\t                AJS.$(\"#resolution option[value='6']\").remove();  // Hide \"Deferred\"     \r\n\t\t                AJS.$(\"#resolution option[value='7']\").remove();  // Hide \"No Issue\"\r\n\t\t                AJS.$(\"#resolution option[value='8']\").remove();  // Hide \"Rejected\"\r\n\t\t                AJS.$(\"#resolution option[value='9']\").remove();  // Hide \"n/a\" \r\n                                                               \r\n                // Pre-select \"Fixed\" resolution and hide all fields related to \"Won't Fix\" and \"Duplicate\"\r\n                if(resolutionValue==\"1\"){\r\n                \t\r\n                \tresolutionDescription.show();\r\n\t\t\tdecisionRationale.hide();\r\n\t\t\tduplicateIssues.hide();\r\n\t\t\t\r\n                }\r\n\t      else if(resolutionValue==\"3\"){\t          \r\n\t      \tduplicateIssues.show();\t          \r\n\t              decisionRationale.hide();\t          \r\n\t              resolutionDescription.hide();\r\n\t              \r\n\t      }\r\n\t      \r\n\t      else {\t          \r\n\t      \tduplicateIssues.hide();\t\t\t\t\t          \t          \r\n\t      \tdecisionRationale.show()  \t\t\t\t\t\t          \r\n\t      \tresolutionDescription.hide();\t\t\t\t\t\t                         \t\t                            \r\n\t      \t}\t\t\t\t\t\t\t                        \r\n               \t\t\t\t\t            \t\t\t       \t\t        \r\n                \r\n                // React to change of resolution value and show/hide fields accordingly\r\n    AJS.$(\"#resolution\").change(function() \r\n    { \r\n        var resolution = AJS.$('#resolution').val();\r\n                                \r\n                                if(resolution==\"1\"){\r\n\t\t\t                       \t\r\n\t\t\t                       \tresolutionDescription.show();\r\n\t\t\t       \t\t\tdecisionRationale.hide();\r\n\t\t\t       \t\t\tduplicateIssues.hide();\r\n\t\t\t       \t\t\t\r\n\t\t\t                       }     \r\n\t\t\t                       \t\t       \t\t                \r\n\t\t\t       \t\t       else if(resolution==\"3\"){        \r\n\t\t\t       \t\t        \tduplicateIssues.show();        \r\n\t\t\t       \t\t                decisionRationale.hide();        \r\n\t\t\t       \t\t                resolutionDescription.hide();\r\n\t\t\t       \t\t                \r\n\t\t\t       \t\t        }\r\n\t\t\t       \t\t        else {\t          \r\n\t\t\t\t\t\t          duplicateIssues.hide();\t          \r\n\t\t\t\t\t\t\t  decisionRationale.show()          \r\n\t\t\t\t\t\t\t  resolutionDescription.hide();                       \t\t                            \r\n\t\t\t\t\t\t\t\t                        \r\n               \t\t\t\t\t }\r\n                \r\n    });\r\n};\r\nAJS.$(function () {\r\n \r\n    function initMyCustomField(dialog) {\r\n        AJS.$(dialog || document.body).each(function () {\r\n            var $dialog = AJS.$(this);\r\n            \r\n        });\r\n    }\r\n \r\n    \r\nwindow.onload();\r\n \r\n    AJS.$(document).bind(\"dialogContentReady\", function (e, dialog) {\r\n        window.onload(dialog.get$popupContent());\r\n    });\r\n \r\n});\r\n</script>",
+        "customfield_12800": [],
+        "customfield_13300": "HUDC-602",
+        "customfield_13500": null,
+        "customfield_13600": null,
+        "customfield_13702": null,
+        "customfield_13703": null,
+        "customfield_13704": null,
+        "customfield_13801": null,
+        "customfield_14101": null,
+        "customfield_14200": "0.0",
+        "customfield_14400": null,
+        "customfield_14401": null,
+        "customfield_14900": [
+            "Unchecked: Design Done",
+            "Unchecked: Code Submitted"
+        ],
+        "customfield_15801": null,
+        "customfield_15802": null,
+        "customfield_16000": "2|hyoz9b:",
+        "customfield_17400": null,
+        "customfield_17900": [],
+        "customfield_18000": null,
+        "customfield_18001": null,
+        "customfield_18002": null,
+        "customfield_18003": null,
+        "customfield_18004": null,
+        "customfield_18005": null,
+        "customfield_18006": null,
+        "customfield_18007": null,
+        "customfield_18008": null,
+        "customfield_18009": null,
+        "customfield_18010": null,
+        "customfield_18200": null,
+        "customfield_18201": null,
+        "customfield_18202": null,
+        "customfield_18203": null,
+        "customfield_18204": null,
+        "customfield_18205": null,
+        "customfield_18206": null,
+        "customfield_18207": null,
+        "customfield_18208": [
+            "com.honeywell.act.jira.plugin.customfieldtypes.model.LinkedIssue@19e2c1a7"
+        ],
+        "customfield_18209": [],
+        "customfield_18900": null,
+        "customfield_18901": null,
+        "customfield_19500": null,
+        "customfield_19600": null,
+        "customfield_19800": null,
+        "customfield_19801": null,
+        "customfield_19802": null,
+        "customfield_20001": null,
+        "customfield_20100": null,
+        "customfield_20101": null,
+        "customfield_20102": null,
+        "customfield_20404": "2019-08-01",
+        "customfield_20405": null,
+        "customfield_20500": null,
+        "customfield_20800": null,
+        "customfield_20900": null,
+        "customfield_20901": null,
+        "customfield_20910": null,
+        "customfield_20911": null,
+        "customfield_20914": null,
+        "customfield_20915": null,
+        "customfield_20916": null,
+        "customfield_20917": null,
+        "customfield_20918": null,
+        "customfield_20919": null,
+        "customfield_20920": null,
+        "customfield_20921": null,
+        "customfield_20922": null,
+        "customfield_20923": null,
+        "customfield_20924": null,
+        "customfield_20925": null,
+        "customfield_20926": null,
+        "customfield_20927": null,
+        "customfield_20928": null,
+        "customfield_20929": null,
+        "customfield_20930": null,
+        "customfield_20931": null,
+        "customfield_20932": null,
+        "customfield_20933": null,
+        "customfield_20934": null,
+        "customfield_20935": null,
+        "customfield_20936": null,
+        "customfield_20938": "0.0",
+        "customfield_20939": null,
+        "customfield_20940": null,
+        "customfield_20942": null,
+        "customfield_20947": null,
+        "customfield_20948": null,
+        "customfield_20949": null,
+        "customfield_20950": null,
+        "customfield_21000": null,
+        "customfield_21600": "<script type=\"text/javascript\">\r\n\r\nwindow.onload = function(){\r\n    if ($(\"label[for='customfield_10524']\").length > 0)\r\n        var resolutionDescription = AJS.$(\"label[for='customfield_10524']\").parent();\r\n    else\r\n        var resolutionDescription = AJS.$(\"label[for='cbcustomfield_10524']\").parent().parent();\r\n    \r\n    if ($(\"label[for='customfield_10326']\").length > 0)\r\n        var decisionRationale = AJS.$(\"label[for='customfield_10326']\").parent();\r\n    else\r\n        var decisionRationale = AJS.$(\"label[for='cbcustomfield_10326']\").parent().parent();\r\n\r\n    if ($(\"label[for='customfield_11450']\").length > 0)\r\n        var duplicateIssues = AJS.$(\"label[for='customfield_11450']\").parent();\r\n    else\r\n        var duplicateIssues = AJS.$(\"label[for='cbcustomfield_11450']\").parent().parent();\r\n\r\n    var descisionRationaleWiki = AJS.$('#customfield_10326-wiki-edit').parent().parent();\r\n    var resolutionValue = AJS.$('#resolution').val();\r\n    var fixECR = AJS.$('#customfield_10083').parent();\r\n\r\n    if (resolutionValue==\"1\"){\r\n        resolutionDescription.show();\r\n        decisionRationale.hide();\r\n        duplicateIssues.hide();\r\n    } else if (resolutionValue==\"2\") {\r\n        resolutionDescription.hide();\r\n        duplicateIssues.hide();\r\n        decisionRationale.show();\r\n        descisionRationaleWiki.show();\r\n    } else if(resolutionValue==\"3\"){\r\n        duplicateIssues.show();\r\n        resolutionDescription.hide();\r\n        decisionRationale.show();\r\n        descisionRationaleWiki.show();\r\n    } else if(resolutionValue==\"7\"){\r\n        resolutionDescription.hide();\r\n        duplicateIssues.hide();\r\n        decisionRationale.show();\r\n        descisionRationaleWiki.show();\r\n    } else if(resolutionValue==\"10\"){\r\n        resolutionDescription.hide();\r\n        duplicateIssues.hide();\r\n        decisionRationale.show();\r\n        descisionRationaleWiki.show();\r\n     }else if(resolutionValue==\"5\"){\r\n        resolutionDescription.hide();\r\n        duplicateIssues.hide();\r\n        decisionRationale.show();\r\n        descisionRationaleWiki.show();\r\n    } else if(resolutionValue==\"10600\"){\r\n        resolutionDescription.show();\r\n        duplicateIssues.hide();\r\n        descisionRationaleWiki.show();\r\n        decisionRationale.hide();\r\n    } else if(resolutionValue==\"10601\"){\r\n        resolutionDescription.show();\r\n        duplicateIssues.hide();\r\n        decisionRationale.hide();\r\n        descisionRationaleWiki.show();\r\n    } else {\r\n         resolutionDescription.hide();\r\n        duplicateIssues.hide();\r\n        decisionRationale.hide();\r\n        descisionRationaleWiki.hide();\r\n    }\r\n\r\n    AJS.$(\"#resolution\").change(function() { \r\n        var resolutionValue = AJS.$('#resolution').val();\r\n\r\n        if (resolutionValue==\"1\"){\r\n            resolutionDescription.show();\r\n            decisionRationale.hide();\r\n            duplicateIssues.hide();\r\n        } else if (resolutionValue==\"2\") {\r\n            resolutionDescription.hide();\r\n            duplicateIssues.hide();\r\n            decisionRationale.show();\r\n            descisionRationaleWiki.show();\r\n        } else if(resolutionValue==\"3\"){\r\n            duplicateIssues.show();\r\n            resolutionDescription.hide();\r\n            decisionRationale.show();\r\n            descisionRationaleWiki.show();\r\n        } else if(resolutionValue==\"7\"){\r\n            resolutionDescription.hide();\r\n            duplicateIssues.hide();\r\n            decisionRationale.show();\r\n            descisionRationaleWiki.show();\r\n        } else if(resolutionValue==\"10\"){\r\n            resolutionDescription.hide();\r\n            duplicateIssues.hide();\r\n            decisionRationale.show();\r\n            descisionRationaleWiki.show();\r\n         }else if(resolutionValue==\"5\"){\r\n            resolutionDescription.hide();\r\n            duplicateIssues.hide();\r\n            decisionRationale.show();\r\n            descisionRationaleWiki.show();\r\n        } else if(resolutionValue==\"10600\"){\r\n            resolutionDescription.show();\r\n            duplicateIssues.hide();\r\n            descisionRationaleWiki.show();\r\n            decisionRationale.hide();\r\n        } else if(resolutionValue==\"10601\"){\r\n            resolutionDescription.show();\r\n            duplicateIssues.hide();\r\n            decisionRationale.hide();\r\n            descisionRationaleWiki.show();\r\n        } else {\r\n             resolutionDescription.hide();\r\n            duplicateIssues.hide();\r\n            decisionRationale.hide();\r\n            descisionRationaleWiki.hide();\r\n        }           \r\n    });\r\n};\r\n\r\nAJS.$(function () {\r\n \r\n    function initMyCustomField(dialog) {\r\n        AJS.$(dialog || document.body).each(function () {\r\n            var $dialog = AJS.$(this);\r\n            \r\n        });\r\n    }\r\n \r\n    \r\nwindow.onload();\r\n \r\n    AJS.$(document).bind(\"dialogContentReady\", function (e, dialog) {\r\n        window.onload(dialog.get$popupContent());\r\n    });\r\n \r\n});\r\n</script>",
+        "customfield_21700": null,
+        "customfield_21701": null,
+        "customfield_21702": null,
+        "customfield_21703": null,
+        "customfield_21900": null,
+        "customfield_21901": null,
+        "customfield_21902": null,
+        "customfield_21903": null,
+        "customfield_22000": null,
+        "customfield_22001": null,
+        "customfield_22002": null,
+        "customfield_22003": null,
+        "customfield_22004": null,
+        "customfield_22005": null,
+        "customfield_22006": null,
+        "customfield_22007": null,
+        "customfield_22008": null,
+        "customfield_22009": null,
+        "customfield_22010": null,
+        "customfield_22011": null,
+        "customfield_22012": null,
+        "customfield_22013": null,
+        "customfield_22014": null,
+        "customfield_22015": null,
+        "customfield_22016": null,
+        "customfield_22017": null,
+        "customfield_22018": null,
+        "customfield_22019": null,
+        "customfield_22020": null,
+        "customfield_22021": null,
+        "customfield_22022": null,
+        "customfield_22023": null,
+        "customfield_22024": null,
+        "customfield_22027": null,
+        "customfield_22028": null,
+        "customfield_22029": null,
+        "customfield_22030": null,
+        "customfield_22031": null,
+        "customfield_22032": null,
+        "customfield_22033": null,
+        "customfield_22034": null,
+        "customfield_22035": null,
+        "customfield_22036": null,
+        "customfield_22037": null,
+        "customfield_22038": null,
+        "customfield_22300": "{summaryBean=com.atlassian.jira.plugin.devstatus.rest.SummaryBean@14ab9053[summary={pullrequest=com.atlassian.jira.plugin.devstatus.rest.SummaryItemBean@7dc0c7ea[overall=PullRequestOverallBean{stateCount=0, state='OPEN', details=PullRequestOverallDetails{openCount=0, mergedCount=0, declinedCount=0}},byInstanceType={}], build=com.atlassian.jira.plugin.devstatus.rest.SummaryItemBean@51f839c4[overall=com.atlassian.jira.plugin.devstatus.summary.beans.BuildOverallBean@2a7c4b86[failedBuildCount=0,successfulBuildCount=0,unknownBuildCount=0,count=0,lastUpdated=<null>,lastUpdatedTimestamp=<null>],byInstanceType={}], review=com.atlassian.jira.plugin.devstatus.rest.SummaryItemBean@1982f7f4[overall=com.atlassian.jira.plugin.devstatus.summary.beans.ReviewsOverallBean@48174b03[stateCount=0,state=<null>,dueDate=<null>,overDue=false,count=0,lastUpdated=<null>,lastUpdatedTimestamp=<null>],byInstanceType={}], deployment-environment=com.atlassian.jira.plugin.devstatus.rest.SummaryItemBean@58317ddc[overall=com.atlassian.jira.plugin.devstatus.summary.beans.DeploymentOverallBean@10593d27[topEnvironments=[],showProjects=false,successfulCount=0,count=0,lastUpdated=<null>,lastUpdatedTimestamp=<null>],byInstanceType={}], repository=com.atlassian.jira.plugin.devstatus.rest.SummaryItemBean@1eea458f[overall=com.atlassian.jira.plugin.devstatus.summary.beans.CommitOverallBean@6cd75a02[count=0,lastUpdated=<null>,lastUpdatedTimestamp=<null>],byInstanceType={}], branch=com.atlassian.jira.plugin.devstatus.rest.SummaryItemBean@3f5b15d9[overall=com.atlassian.jira.plugin.devstatus.summary.beans.BranchOverallBean@66b2a710[count=0,lastUpdated=<null>,lastUpdatedTimestamp=<null>],byInstanceType={}]},errors=[],configErrors=[]], devSummaryJson={\"cachedValue\":{\"errors\":[],\"configErrors\":[],\"summary\":{\"pullrequest\":{\"overall\":{\"count\":0,\"lastUpdated\":null,\"stateCount\":0,\"state\":\"OPEN\",\"details\":{\"openCount\":0,\"mergedCount\":0,\"declinedCount\":0,\"total\":0},\"open\":true},\"byInstanceType\":{}},\"build\":{\"overall\":{\"count\":0,\"lastUpdated\":null,\"failedBuildCount\":0,\"successfulBuildCount\":0,\"unknownBuildCount\":0},\"byInstanceType\":{}},\"review\":{\"overall\":{\"count\":0,\"lastUpdated\":null,\"stateCount\":0,\"state\":null,\"dueDate\":null,\"overDue\":false,\"completed\":false},\"byInstanceType\":{}},\"deployment-environment\":{\"overall\":{\"count\":0,\"lastUpdated\":null,\"topEnvironments\":[],\"showProjects\":false,\"successfulCount\":0},\"byInstanceType\":{}},\"repository\":{\"overall\":{\"count\":0,\"lastUpdated\":null},\"byInstanceType\":{}},\"branch\":{\"overall\":{\"count\":0,\"lastUpdated\":null},\"byInstanceType\":{}}}},\"isStale\":false}}",
+        "customfield_22500": null,
+        "customfield_22501": null,
+        "customfield_22502": null,
+        "customfield_22503": null,
+        "customfield_22504": null,
+        "customfield_22505": null,
+        "customfield_22506": null,
+        "customfield_22507": null,
+        "customfield_22508": null,
+        "customfield_22510": null,
+        "customfield_22700": null,
+        "customfield_22800": [],
+        "description": "Description:\r\n # The controller shall support Simplex Relay/Current output control\r\n # The controller shall support manual setting of Output Value\r\n # The controller shall support field calibration\r\n\r\nUsing Method:\r\n # GUI\r\n # Modbus\r\n # Ethernet\r\n # Bluetooth\r\n\r\nDefinition of Done:\r\n # Output Value can be converted to correct output signals along with settings.\r\n # The accuracy of Current Output is\u00a0\u00b1 0.05% of full scale typical.\u00a0",
+        "duedate": null,
+        "environment": null,
+        "fixVersions": [
+            {
+                "archived": false,
+                "description": "",
+                "id": "120750",
+                "name": "R100",
+                "releaseDate": "2019-12-31",
+                "released": false,
+                "self": "https://acsjira.honeywell.com/rest/api/2/version/120750"
+            }
+        ],
+        "issuelinks": [
+            {
+                "id": "1638148",
+                "inwardIssue": {
+                    "fields": {
+                        "issuetype": {
+                            "avatarId": 31325,
+                            "description": "Created by Jira Software - do not edit or delete. Issue type for a user story.",
+                            "iconUrl": "https://acsjira.honeywell.com/secure/viewavatar?size=xsmall&avatarId=31325&avatarType=issuetype",
+                            "id": "67",
+                            "name": "Story",
+                            "self": "https://acsjira.honeywell.com/rest/api/2/issuetype/67",
+                            "subtask": false
+                        },
+                        "priority": {
+                            "iconUrl": "https://acsjira.honeywell.com/images/icons/priorities/trivial.svg",
+                            "id": "10",
+                            "name": "None",
+                            "self": "https://acsjira.honeywell.com/rest/api/2/priority/10"
+                        },
+                        "status": {
+                            "description": "This issue is being actively worked on at the moment by the assignee.",
+                            "iconUrl": "https://acsjira.honeywell.com/images/icons/statuses/inprogress.png",
+                            "id": "3",
+                            "name": "In Progress",
+                            "self": "https://acsjira.honeywell.com/rest/api/2/status/3",
+                            "statusCategory": {
+                                "colorName": "yellow",
+                                "id": 4,
+                                "key": "indeterminate",
+                                "name": "In Progress",
+                                "self": "https://acsjira.honeywell.com/rest/api/2/statuscategory/4"
+                            }
+                        },
+                        "summary": "[MAIN]As an user, I shall be able to set Output Value and use Relay/Current as output, so that I can control device manually"
+                    },
+                    "id": "3060221",
+                    "key": "HUDC-603",
+                    "self": "https://acsjira.honeywell.com/rest/api/2/issue/3060221"
+                },
+                "self": "https://acsjira.honeywell.com/rest/api/2/issueLink/1638148",
+                "type": {
+                    "id": "10020",
+                    "inward": "relates to",
+                    "name": "Relates",
+                    "outward": "relates to",
+                    "self": "https://acsjira.honeywell.com/rest/api/2/issueLinkType/10020"
+                }
+            }
+        ],
+        "issuetype": {
+            "avatarId": 31325,
+            "description": "Created by Jira Software - do not edit or delete. Issue type for a user story.",
+            "iconUrl": "https://acsjira.honeywell.com/secure/viewavatar?size=xsmall&avatarId=31325&avatarType=issuetype",
+            "id": "67",
+            "name": "Story",
+            "self": "https://acsjira.honeywell.com/rest/api/2/issuetype/67",
+            "subtask": false
+        },
+        "labels": [
+            "SUB-1"
+        ],
+        "lastViewed": "2019-07-30T16:01:59.640+0000",
+        "priority": {
+            "iconUrl": "https://acsjira.honeywell.com/images/icons/priorities/trivial.svg",
+            "id": "10",
+            "name": "None",
+            "self": "https://acsjira.honeywell.com/rest/api/2/priority/10"
+        },
+        "progress": {
+            "percent": 100,
+            "progress": 100800,
+            "total": 100800
+        },
+        "project": {
+            "avatarUrls": {
+                "16x16": "https://acsjira.honeywell.com/secure/projectavatar?size=xsmall&avatarId=39413",
+                "24x24": "https://acsjira.honeywell.com/secure/projectavatar?size=small&avatarId=39413",
+                "32x32": "https://acsjira.honeywell.com/secure/projectavatar?size=medium&avatarId=39413",
+                "48x48": "https://acsjira.honeywell.com/secure/projectavatar?avatarId=39413"
+            },
+            "id": "61753",
+            "key": "HUDC",
+            "name": "HPS Universal Digital Controller",
+            "self": "https://acsjira.honeywell.com/rest/api/2/project/61753"
+        },
+        "reporter": {
+            "active": true,
+            "avatarUrls": {
+                "16x16": "https://acsjira.honeywell.com/secure/useravatar?size=xsmall&avatarId=10932",
+                "24x24": "https://acsjira.honeywell.com/secure/useravatar?size=small&avatarId=10932",
+                "32x32": "https://acsjira.honeywell.com/secure/useravatar?size=medium&avatarId=10932",
+                "48x48": "https://acsjira.honeywell.com/secure/useravatar?avatarId=10932"
+            },
+            "displayName": "Tong (Billy) Li",
+            "emailAddress": "Tong.Li4@Honeywell.com",
+            "key": "h309462",
+            "name": "H309462",
+            "self": "https://acsjira.honeywell.com/rest/api/2/user?username=H309462",
+            "timeZone": "GMT"
+        },
+        "resolution": {
+            "description": "A fix for this issue is checked into the tree and tested.",
+            "id": "1",
+            "name": "Fixed",
+            "self": "https://acsjira.honeywell.com/rest/api/2/resolution/1"
+        },
+        "resolutiondate": "2019-08-01T05:43:33.936+0000",
+        "status": {
+            "description": "The issue is considered finished, the resolution is correct. Issues which are closed can be reopened.",
+            "iconUrl": "https://acsjira.honeywell.com/images/icons/statuses/closed.png",
+            "id": "6",
+            "name": "Closed",
+            "self": "https://acsjira.honeywell.com/rest/api/2/status/6",
+            "statusCategory": {
+                "colorName": "green",
+                "id": 3,
+                "key": "done",
+                "name": "Done",
+                "self": "https://acsjira.honeywell.com/rest/api/2/statuscategory/3"
+            }
+        },
+        "subtasks": [
+            {
+                "fields": {
+                    "issuetype": {
+                        "avatarId": 31326,
+                        "description": "The sub-task of the issue",
+                        "iconUrl": "https://acsjira.honeywell.com/secure/viewavatar?size=xsmall&avatarId=31326&avatarType=issuetype",
+                        "id": "5",
+                        "name": "Sub-Task",
+                        "self": "https://acsjira.honeywell.com/rest/api/2/issuetype/5",
+                        "subtask": true
+                    },
+                    "priority": {
+                        "iconUrl": "https://acsjira.honeywell.com/images/icons/priorities/trivial.svg",
+                        "id": "10",
+                        "name": "None",
+                        "self": "https://acsjira.honeywell.com/rest/api/2/priority/10"
+                    },
+                    "status": {
+                        "description": "The issue is considered finished, the resolution is correct. Issues which are closed can be reopened.",
+                        "iconUrl": "https://acsjira.honeywell.com/images/icons/statuses/closed.png",
+                        "id": "6",
+                        "name": "Closed",
+                        "self": "https://acsjira.honeywell.com/rest/api/2/status/6",
+                        "statusCategory": {
+                            "colorName": "green",
+                            "id": 3,
+                            "key": "done",
+                            "name": "Done",
+                            "self": "https://acsjira.honeywell.com/rest/api/2/statuscategory/3"
+                        }
+                    },
+                    "summary": "Create duty-cycle generator"
+                },
+                "id": "3188419",
+                "key": "HUDC-674",
+                "self": "https://acsjira.honeywell.com/rest/api/2/issue/3188419"
+            }
+        ],
+        "summary": "[SUB-1]As an user, I shall be able to set Output Value and use Simplex Relay/Current as output, so that I can control device manually",
+        "timeestimate": 0,
+        "timeoriginalestimate": null,
+        "timespent": 100800,
+        "timetracking": {
+            "remainingEstimate": "0h",
+            "remainingEstimateSeconds": 0,
+            "timeSpent": "28h",
+            "timeSpentSeconds": 100800
+        },
+        "updated": "2019-08-01T05:43:33.955+0000",
+        "versions": [],
+        "votes": {
+            "hasVoted": false,
+            "self": "https://acsjira.honeywell.com/rest/api/2/issue/HUDC-632/votes",
+            "votes": 0
+        },
+        "watches": {
+            "isWatching": false,
+            "self": "https://acsjira.honeywell.com/rest/api/2/issue/HUDC-632/watchers",
+            "watchCount": 1
+        },
+        "worklog": {
+            "maxResults": 20,
+            "startAt": 0,
+            "total": 6,
+            "worklogs": [
+                {
+                    "author": {
+                        "active": true,
+                        "avatarUrls": {
+                            "16x16": "https://acsjira.honeywell.com/secure/useravatar?size=xsmall&ownerId=h191693&avatarId=63318",
+                            "24x24": "https://acsjira.honeywell.com/secure/useravatar?size=small&ownerId=h191693&avatarId=63318",
+                            "32x32": "https://acsjira.honeywell.com/secure/useravatar?size=medium&ownerId=h191693&avatarId=63318",
+                            "48x48": "https://acsjira.honeywell.com/secure/useravatar?ownerId=h191693&avatarId=63318"
+                        },
+                        "displayName": "Qiuyun Wang",
+                        "emailAddress": "Jeck.Wang@Honeywell.com",
+                        "key": "h191693",
+                        "name": "h191693",
+                        "self": "https://acsjira.honeywell.com/rest/api/2/user?username=h191693",
+                        "timeZone": "GMT"
+                    },
+                    "comment": "",
+                    "created": "2019-07-22T01:37:55.408+0000",
+                    "id": "1751591",
+                    "issueId": "3151105",
+                    "self": "https://acsjira.honeywell.com/rest/api/2/issue/3151105/worklog/1751591",
+                    "started": "2019-07-19T01:37:00.000+0000",
+                    "timeSpent": "4h",
+                    "timeSpentSeconds": 14400,
+                    "updateAuthor": {
+                        "active": true,
+                        "avatarUrls": {
+                            "16x16": "https://acsjira.honeywell.com/secure/useravatar?size=xsmall&ownerId=h191693&avatarId=63318",
+                            "24x24": "https://acsjira.honeywell.com/secure/useravatar?size=small&ownerId=h191693&avatarId=63318",
+                            "32x32": "https://acsjira.honeywell.com/secure/useravatar?size=medium&ownerId=h191693&avatarId=63318",
+                            "48x48": "https://acsjira.honeywell.com/secure/useravatar?ownerId=h191693&avatarId=63318"
+                        },
+                        "displayName": "Qiuyun Wang",
+                        "emailAddress": "Jeck.Wang@Honeywell.com",
+                        "key": "h191693",
+                        "name": "h191693",
+                        "self": "https://acsjira.honeywell.com/rest/api/2/user?username=h191693",
+                        "timeZone": "GMT"
+                    },
+                    "updated": "2019-07-22T01:37:55.408+0000"
+                },
+                {
+                    "author": {
+                        "active": true,
+                        "avatarUrls": {
+                            "16x16": "https://acsjira.honeywell.com/secure/useravatar?size=xsmall&ownerId=h191693&avatarId=63318",
+                            "24x24": "https://acsjira.honeywell.com/secure/useravatar?size=small&ownerId=h191693&avatarId=63318",
+                            "32x32": "https://acsjira.honeywell.com/secure/useravatar?size=medium&ownerId=h191693&avatarId=63318",
+                            "48x48": "https://acsjira.honeywell.com/secure/useravatar?ownerId=h191693&avatarId=63318"
+                        },
+                        "displayName": "Qiuyun Wang",
+                        "emailAddress": "Jeck.Wang@Honeywell.com",
+                        "key": "h191693",
+                        "name": "h191693",
+                        "self": "https://acsjira.honeywell.com/rest/api/2/user?username=h191693",
+                        "timeZone": "GMT"
+                    },
+                    "comment": "",
+                    "created": "2019-08-01T02:03:01.708+0000",
+                    "id": "1838514",
+                    "issueId": "3151105",
+                    "self": "https://acsjira.honeywell.com/rest/api/2/issue/3151105/worklog/1838514",
+                    "started": "2019-08-19T02:02:00.000+0000",
+                    "timeSpent": "4h",
+                    "timeSpentSeconds": 14400,
+                    "updateAuthor": {
+                        "active": true,
+                        "avatarUrls": {
+                            "16x16": "https://acsjira.honeywell.com/secure/useravatar?size=xsmall&ownerId=h191693&avatarId=63318",
+                            "24x24": "https://acsjira.honeywell.com/secure/useravatar?size=small&ownerId=h191693&avatarId=63318",
+                            "32x32": "https://acsjira.honeywell.com/secure/useravatar?size=medium&ownerId=h191693&avatarId=63318",
+                            "48x48": "https://acsjira.honeywell.com/secure/useravatar?ownerId=h191693&avatarId=63318"
+                        },
+                        "displayName": "Qiuyun Wang",
+                        "emailAddress": "Jeck.Wang@Honeywell.com",
+                        "key": "h191693",
+                        "name": "h191693",
+                        "self": "https://acsjira.honeywell.com/rest/api/2/user?username=h191693",
+                        "timeZone": "GMT"
+                    },
+                    "updated": "2019-08-01T02:03:01.708+0000"
+                },
+                {
+                    "author": {
+                        "active": true,
+                        "avatarUrls": {
+                            "16x16": "https://acsjira.honeywell.com/secure/useravatar?size=xsmall&ownerId=h191693&avatarId=63318",
+                            "24x24": "https://acsjira.honeywell.com/secure/useravatar?size=small&ownerId=h191693&avatarId=63318",
+                            "32x32": "https://acsjira.honeywell.com/secure/useravatar?size=medium&ownerId=h191693&avatarId=63318",
+                            "48x48": "https://acsjira.honeywell.com/secure/useravatar?ownerId=h191693&avatarId=63318"
+                        },
+                        "displayName": "Qiuyun Wang",
+                        "emailAddress": "Jeck.Wang@Honeywell.com",
+                        "key": "h191693",
+                        "name": "h191693",
+                        "self": "https://acsjira.honeywell.com/rest/api/2/user?username=h191693",
+                        "timeZone": "GMT"
+                    },
+                    "comment": "",
+                    "created": "2019-08-01T02:03:17.325+0000",
+                    "id": "1838515",
+                    "issueId": "3151105",
+                    "self": "https://acsjira.honeywell.com/rest/api/2/issue/3151105/worklog/1838515",
+                    "started": "2019-08-22T02:03:00.000+0000",
+                    "timeSpent": "4h",
+                    "timeSpentSeconds": 14400,
+                    "updateAuthor": {
+                        "active": true,
+                        "avatarUrls": {
+                            "16x16": "https://acsjira.honeywell.com/secure/useravatar?size=xsmall&ownerId=h191693&avatarId=63318",
+                            "24x24": "https://acsjira.honeywell.com/secure/useravatar?size=small&ownerId=h191693&avatarId=63318",
+                            "32x32": "https://acsjira.honeywell.com/secure/useravatar?size=medium&ownerId=h191693&avatarId=63318",
+                            "48x48": "https://acsjira.honeywell.com/secure/useravatar?ownerId=h191693&avatarId=63318"
+                        },
+                        "displayName": "Qiuyun Wang",
+                        "emailAddress": "Jeck.Wang@Honeywell.com",
+                        "key": "h191693",
+                        "name": "h191693",
+                        "self": "https://acsjira.honeywell.com/rest/api/2/user?username=h191693",
+                        "timeZone": "GMT"
+                    },
+                    "updated": "2019-08-01T02:03:17.325+0000"
+                },
+                {
+                    "author": {
+                        "active": true,
+                        "avatarUrls": {
+                            "16x16": "https://acsjira.honeywell.com/secure/useravatar?size=xsmall&ownerId=h191693&avatarId=63318",
+                            "24x24": "https://acsjira.honeywell.com/secure/useravatar?size=small&ownerId=h191693&avatarId=63318",
+                            "32x32": "https://acsjira.honeywell.com/secure/useravatar?size=medium&ownerId=h191693&avatarId=63318",
+                            "48x48": "https://acsjira.honeywell.com/secure/useravatar?ownerId=h191693&avatarId=63318"
+                        },
+                        "displayName": "Qiuyun Wang",
+                        "emailAddress": "Jeck.Wang@Honeywell.com",
+                        "key": "h191693",
+                        "name": "h191693",
+                        "self": "https://acsjira.honeywell.com/rest/api/2/user?username=h191693",
+                        "timeZone": "GMT"
+                    },
+                    "comment": "",
+                    "created": "2019-08-01T02:03:35.496+0000",
+                    "id": "1838516",
+                    "issueId": "3151105",
+                    "self": "https://acsjira.honeywell.com/rest/api/2/issue/3151105/worklog/1838516",
+                    "started": "2019-08-20T02:03:00.000+0000",
+                    "timeSpent": "4h",
+                    "timeSpentSeconds": 14400,
+                    "updateAuthor": {
+                        "active": true,
+                        "avatarUrls": {
+                            "16x16": "https://acsjira.honeywell.com/secure/useravatar?size=xsmall&ownerId=h191693&avatarId=63318",
+                            "24x24": "https://acsjira.honeywell.com/secure/useravatar?size=small&ownerId=h191693&avatarId=63318",
+                            "32x32": "https://acsjira.honeywell.com/secure/useravatar?size=medium&ownerId=h191693&avatarId=63318",
+                            "48x48": "https://acsjira.honeywell.com/secure/useravatar?ownerId=h191693&avatarId=63318"
+                        },
+                        "displayName": "Qiuyun Wang",
+                        "emailAddress": "Jeck.Wang@Honeywell.com",
+                        "key": "h191693",
+                        "name": "h191693",
+                        "self": "https://acsjira.honeywell.com/rest/api/2/user?username=h191693",
+                        "timeZone": "GMT"
+                    },
+                    "updated": "2019-08-01T02:03:35.496+0000"
+                },
+                {
+                    "author": {
+                        "active": true,
+                        "avatarUrls": {
+                            "16x16": "https://acsjira.honeywell.com/secure/useravatar?size=xsmall&ownerId=h191693&avatarId=63318",
+                            "24x24": "https://acsjira.honeywell.com/secure/useravatar?size=small&ownerId=h191693&avatarId=63318",
+                            "32x32": "https://acsjira.honeywell.com/secure/useravatar?size=medium&ownerId=h191693&avatarId=63318",
+                            "48x48": "https://acsjira.honeywell.com/secure/useravatar?ownerId=h191693&avatarId=63318"
+                        },
+                        "displayName": "Qiuyun Wang",
+                        "emailAddress": "Jeck.Wang@Honeywell.com",
+                        "key": "h191693",
+                        "name": "h191693",
+                        "self": "https://acsjira.honeywell.com/rest/api/2/user?username=h191693",
+                        "timeZone": "GMT"
+                    },
+                    "comment": "",
+                    "created": "2019-08-01T02:04:06.256+0000",
+                    "id": "1838517",
+                    "issueId": "3151105",
+                    "self": "https://acsjira.honeywell.com/rest/api/2/issue/3151105/worklog/1838517",
+                    "started": "2019-07-31T02:03:00.000+0000",
+                    "timeSpent": "4h",
+                    "timeSpentSeconds": 14400,
+                    "updateAuthor": {
+                        "active": true,
+                        "avatarUrls": {
+                            "16x16": "https://acsjira.honeywell.com/secure/useravatar?size=xsmall&ownerId=h191693&avatarId=63318",
+                            "24x24": "https://acsjira.honeywell.com/secure/useravatar?size=small&ownerId=h191693&avatarId=63318",
+                            "32x32": "https://acsjira.honeywell.com/secure/useravatar?size=medium&ownerId=h191693&avatarId=63318",
+                            "48x48": "https://acsjira.honeywell.com/secure/useravatar?ownerId=h191693&avatarId=63318"
+                        },
+                        "displayName": "Qiuyun Wang",
+                        "emailAddress": "Jeck.Wang@Honeywell.com",
+                        "key": "h191693",
+                        "name": "h191693",
+                        "self": "https://acsjira.honeywell.com/rest/api/2/user?username=h191693",
+                        "timeZone": "GMT"
+                    },
+                    "updated": "2019-08-01T02:04:06.256+0000"
+                },
+                {
+                    "author": {
+                        "active": true,
+                        "avatarUrls": {
+                            "16x16": "https://acsjira.honeywell.com/secure/useravatar?size=xsmall&ownerId=h191693&avatarId=63318",
+                            "24x24": "https://acsjira.honeywell.com/secure/useravatar?size=small&ownerId=h191693&avatarId=63318",
+                            "32x32": "https://acsjira.honeywell.com/secure/useravatar?size=medium&ownerId=h191693&avatarId=63318",
+                            "48x48": "https://acsjira.honeywell.com/secure/useravatar?ownerId=h191693&avatarId=63318"
+                        },
+                        "displayName": "Qiuyun Wang",
+                        "emailAddress": "Jeck.Wang@Honeywell.com",
+                        "key": "h191693",
+                        "name": "h191693",
+                        "self": "https://acsjira.honeywell.com/rest/api/2/user?username=h191693",
+                        "timeZone": "GMT"
+                    },
+                    "comment": "",
+                    "created": "2019-08-01T05:38:50.670+0000",
+                    "id": "1838962",
+                    "issueId": "3151105",
+                    "self": "https://acsjira.honeywell.com/rest/api/2/issue/3151105/worklog/1838962",
+                    "started": "2019-07-30T05:38:00.000+0000",
+                    "timeSpent": "1d",
+                    "timeSpentSeconds": 28800,
+                    "updateAuthor": {
+                        "active": true,
+                        "avatarUrls": {
+                            "16x16": "https://acsjira.honeywell.com/secure/useravatar?size=xsmall&ownerId=h191693&avatarId=63318",
+                            "24x24": "https://acsjira.honeywell.com/secure/useravatar?size=small&ownerId=h191693&avatarId=63318",
+                            "32x32": "https://acsjira.honeywell.com/secure/useravatar?size=medium&ownerId=h191693&avatarId=63318",
+                            "48x48": "https://acsjira.honeywell.com/secure/useravatar?ownerId=h191693&avatarId=63318"
+                        },
+                        "displayName": "Qiuyun Wang",
+                        "emailAddress": "Jeck.Wang@Honeywell.com",
+                        "key": "h191693",
+                        "name": "h191693",
+                        "self": "https://acsjira.honeywell.com/rest/api/2/user?username=h191693",
+                        "timeZone": "GMT"
+                    },
+                    "updated": "2019-08-01T05:38:50.670+0000"
+                }
+            ]
+        },
+        "workratio": -1
+    },
+    "id": "3151105",
+    "key": "HUDC-632",
+    "self": "https://acsjira.honeywell.com/rest/api/2/issue/3151105"
+}
