@@ -33,6 +33,7 @@ function SprintViz()
         loadGraph((err, g) => {
             graph = g;
             if (err) return console.error(err);
+            calcLinkDistance(graph.links);
             draw(graph, {
                 width,
                 height,
@@ -85,6 +86,14 @@ function loadGraph(cb)
     store.issuesGraph('Sprint 10', cb);
 }
 
+function calcLinkDistance(links)
+{
+    links.forEach(l => {
+        l.distance = links.reduce((acc, curr) =>
+            acc + (curr.target == l.target ? 1 : 0), 0);
+    });
+}
+
 function draw(graph, options, cb)
 {
     const width = options.width || 800;
@@ -93,6 +102,9 @@ function draw(graph, options, cb)
     const radiusScale = d3.scaleSqrt()
         .range([2, 30])
         .domain(d3.extent(graph.issues, i => i.work));
+    const distanceScale = d3.scaleLinear()
+        .range([20, 80])
+        .domain(d3.extent(graph.links, l => l.distance));
     fill.domain(d3.extent(graph.issues, i => i.assignee.key));
 
     const issueRadius = i =>
@@ -102,21 +114,17 @@ function draw(graph, options, cb)
     const svg = d3.select(`#${issuesGraphId}`).append('svg')
         .attr('height', height)
         .attr('width', width);
-    /*
-    graph.issues[0].fx = width/2;
-    graph.issues[0].fy = height/2;
-    */
     d3.forceSimulation(graph.issues)
-        .force('gravity', d3.forceManyBody().strength(.05))
-        .force('charge', d3.forceManyBody().strength(-240))
         .force('link', d3.forceLink(graph.links)
             .id(d => d.key)
-            .distance(l => 60)
+            .distance(l => distanceScale(l.distance))
             .strength(2))
         .force('centerX', d3.forceX(d =>
                 d.issueType == 'Sprint' ? width/2 : d.x))
         .force('centerY', d3.forceX(d =>
                 d.issueType == 'Sprint' ? height/2 : d.y))
+        .force('gravity', d3.forceManyBody().strength(.05))
+        .force('charge', d3.forceManyBody().strength(-240))
         .on('tick', ticked)
         .on('end', cb);
 
