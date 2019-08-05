@@ -3,6 +3,7 @@ import * as d3 from 'd3';
 import eventEmitter from 'events';
 import extend from 'extend';
 import jira from '../lib/jira';
+import IssuePanel from './IssuePanel';
 
 /* Currently I have to use an agent for the CORS
  * issue.
@@ -30,17 +31,19 @@ function SprintViz()
     const [issue, setIssue] = useState(null);
     const width = 500, height = 500;
 
-    extend(draw, new eventEmitter());
+    extend(SprintViz, new eventEmitter());
+    SprintViz.on('issueSelected', (issue) => {
+        console.log('issue clicked');
+        setIssue(issue);
+    });
+    SprintViz.on('end', () => {console.log('draw ended');});
 
     useEffect(() => {
         d3.select(`#${issuesGraphId} > *`).remove();
         loadGraph((err, g) => {
             graph = g;
             if (err) return console.error(err);
-            calcLinkDistance(graph.links);
             draw(graph, {width, height});
-            draw.on('issueSelected', (d) => {console.log(d);});
-            draw.on('end', () => {console.log('draw ended');});
         });
     }, [graph]);
 
@@ -50,7 +53,7 @@ function SprintViz()
             </div>
             {issue &&
                 <div id={issuePanelId}>
-                    <p>hello issue!</p>
+                    <IssuePanel issue={issue} />
                 </div>
             }
             <style jsx>{`
@@ -96,16 +99,20 @@ function calcLinkDistance(links)
 
 function draw(graph, options, cb)
 {
+    console.log('** start drawing');
     const width = options.width || 800;
     const height = options.height || 800;
-    const fill = d3.scaleOrdinal(d3.schemeBrBG[10]);
+    const fill = d3.scaleOrdinal(d3.schemeBrBG[10])
+        .domain(d3.extent(graph.issues, i => i.assignee.key));
     const radiusScale = d3.scaleSqrt()
-        .range([2, 30])
-        .domain(d3.extent(graph.issues, i => i.work));
+        .range([2, 80])
+        .domain([0, graph.issues.reduce((max, value) =>
+            value.work > max ? value.work : max, 0)]);
+    /*
     const distanceScale = d3.scaleLinear()
         .range([20, 80])
         .domain(d3.extent(graph.links, l => l.distance));
-    fill.domain(d3.extent(graph.issues, i => i.assignee.key));
+    */
 
     const issueRadius = i =>
         Math.abs(typeof i.workRemained == 'number' ? radiusScale(i.workRemained)
@@ -122,10 +129,15 @@ function draw(graph, options, cb)
         )
         .force('X', d3.forceX(d => width/2))
         .force('Y', d3.forceY(d => height/2))
-        .force('charge', d3.forceManyBody().strength(2))
-        .force('collide', d3.forceCollide().strength(.1).radius(20).iterations(2))
+        .force('charge', d3.forceManyBody()
+            .strength((d, index) => index == 0
+                ? -1 * radiusScale(d.work) * 20
+                : -issueRadius(d) * 20))
+        .force('collide', d3.forceCollide().strength(.1)
+            .radius(d => issueRadius(d) + 5)
+            .iterations(3))
         .on('tick', ticked)
-        .on('end', () => draw.emit('end'));
+        .on('end', () => SprintViz.emit('end'));
 
     const link = svg.selectAll("line")
         .data(graph.links)
@@ -139,7 +151,7 @@ function draw(graph, options, cb)
         .attr("r", issueRadius)
         .style("fill", d => fill(d.assignee.key))
         .style("stroke", d => d3.rgb(fill(d.assignee.key)).darker())
-        .on('click', (d) => draw.emit('issueSelected', d));
+        .on('click', (d) => SprintViz.emit('issueSelected', d));
 
     function ticked()
     {
