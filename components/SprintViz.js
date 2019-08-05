@@ -61,7 +61,6 @@ function SprintViz()
                     display: inline-block;
                     height: 500px;
                     vertical-align: top;
-                    border: 2px solid #777;
                 }
                 #issuepanel {
                     display: inline-block;
