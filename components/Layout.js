@@ -14,9 +14,9 @@ function Layout(props)
             <style jsx>{`
                 .appHeader {
                     position: relative;
-                    background-color: #d3d3d3;
+                    background-color: #a3a3a3;
                     padding: 10px;
-                    color: #727171;
+                    color: #b24e00;
                     height: 85px;
                 }
                 #icon {
