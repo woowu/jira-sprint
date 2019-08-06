@@ -3,17 +3,6 @@ import Head from 'next/head'
 import React from 'react'
 
 export default class UDCSprint extends App {
-    /*
-    static async getInitialProps({ Component, ctx }) {
-        let pageProps = {}
-
-        if (Component.getInitialProps)
-            pageProps = await Component.getInitialProps(ctx)
-
-        return { pageProps }
-    }
-    */
-
     render() {
         const { Component, pageProps } = this.props
 
@@ -24,6 +13,9 @@ export default class UDCSprint extends App {
                     <link href="https://fonts.googleapis.com/css?family=Quicksand"
                         rel="stylesheet"
                     />
+                    <link href="https://fonts.googleapis.com/css?family=Raleway"
+                        rel="stylesheet"
+                    />
                     <title>UDC Sprint</title>
                 </Head>
                 <Component {...pageProps} />
@@ -32,7 +24,8 @@ export default class UDCSprint extends App {
                         margin: 0;
                         padding: 0;
                         font-family: 'Quicksand', sans-serif;
-                        background-color: #f1f3f4;
+                        _xxbackground-color: #f1f3f4;
+                        background-color: #1f1f1f;
                     }
                 `}</style>
             </Container>
