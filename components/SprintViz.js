@@ -29,7 +29,7 @@ function SprintViz()
     var graph = null;
 
     const [issue, setIssue] = useState(null);
-    const width = 500, height = 500;
+    const width = 800, height = 600;
 
     extend(SprintViz, new eventEmitter());
     SprintViz.on('issueSelected', (issue) => {
@@ -59,12 +59,11 @@ function SprintViz()
             <style jsx>{`
                 #issuesgraph {
                     display: inline-block;
-                    height: 500px;
                     vertical-align: top;
+                    border: 1px solid #888;
                 }
                 #issuepanel {
                     display: inline-block;
-                    width: 100;
                     vertical-align: top;
                 }
             `}</style>
@@ -85,22 +84,22 @@ function loadGraph(cb)
             password: jiraPassword,
             proto: 'https',
         });
-    store.issuesGraph('Sprint 10', cb);
-}
-
-function calcLinkDistance(links)
-{
-    links.forEach(l => {
-        l.distance = links.reduce((acc, curr) =>
-            acc + (curr.target == l.target ? 1 : 0), 0);
-    });
+    store.sprintGraph('Sprint 11', cb);
 }
 
 function draw(graph, options, cb)
 {
-    console.log('** start drawing');
-    const width = options.width || 800;
-    const height = options.height || 800;
+    const width = options.width;
+    const height = options.height;
+    const margin = {
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 200,
+    };
+    const w = width - margin.left - margin.right;
+    const h = height - margin.top - margin.bottom;
+
     const fill = d3.scaleOrdinal(d3.schemeBrBG[10])
         .domain(d3.extent(graph.issues, i => i.assignee.key));
     const radiusScale = d3.scaleSqrt()
@@ -113,21 +112,21 @@ function draw(graph, options, cb)
         .domain(d3.extent(graph.links, l => l.distance));
     */
 
-    const issueRadius = i =>
-        Math.abs(typeof i.workRemained == 'number' ? radiusScale(i.workRemained)
-            : radiusScale(i.work));
+    console.log('start drawing');
 
     const svg = d3.select(`#${issuesGraphId}`).append('svg')
         .attr('height', height)
         .attr('width', width);
+    const g = svg.append('g')
+        .attr('transform', `translate(${margin.left}, ${margin.top})`);
     d3.forceSimulation(graph.issues)
         .force('link', d3.forceLink(graph.links)
             .id(d => d.key)
             //.distance(l => distanceScale(l.distance))
             //.strength(2)
         )
-        .force('X', d3.forceX(d => width/2))
-        .force('Y', d3.forceY(d => height/2))
+        .force('X', d3.forceX(d => w/2))
+        .force('Y', d3.forceY(d => h/2))
         .force('charge', d3.forceManyBody()
             .strength((d, index) => index == 0
                 ? -1 * radiusScale(d.work) * 20
@@ -138,15 +137,15 @@ function draw(graph, options, cb)
         .on('tick', ticked)
         .on('end', () => SprintViz.emit('end'));
 
-    const link = svg.selectAll("line")
+    const link = g.selectAll("line")
         .data(graph.links)
         .enter().append("line")
         .style('stroke', '#999');
-    const node = svg.selectAll("circle")
+    const node = g.selectAll("circle")
         .data(graph.issues)
         .enter().append("circle")
-        .attr('cx', width/2)
-        .attr('cy', height/2)
+        .attr('cx', w/2)
+        .attr('cy', h/2)
         .attr("r", issueRadius)
         .style("fill", d => fill(d.assignee.key))
         .style("stroke", d => d3.rgb(fill(d.assignee.key)).darker())
@@ -156,15 +155,20 @@ function draw(graph, options, cb)
     {
         node.attr("cx", d => d.x = Math.max(
                 issueRadius(d),
-                Math.min(width - issueRadius(d), d.x)))
+                Math.min(w - issueRadius(d), d.x)))
             .attr("cy", d => d.y = Math.max(
                 issueRadius(d),
-                Math.min(height - issueRadius(d), d.y)));
+                Math.min(h - issueRadius(d), d.y)));
 
         link.attr("x1", d => d.source.x)
             .attr("y1", d => d.source.y)
             .attr("x2", d => d.target.x)
             .attr("y2", d => d.target.y);
+    }
+
+    function issueRadius(i)
+    {
+        return radiusScale(Math.abs(i.work - i .workDelegated));
     }
 }
 
