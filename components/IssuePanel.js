@@ -6,24 +6,25 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
-      card: {
-              minWidth: 300,
-            },
-      bullet: {
-              display: 'inline-block',
-              margin: '0 2px',
-              transform: 'scale(0.8)',
-            },
-      title: {
-              fontSize: 14,
-            },
-      pos: {
-              marginBottom: 12,
-            },
-      summary: {
-          width: '22em',
-          wordWrap: 'word-wrap',
-      },
+    card: {
+        minWidth: 300,
+        backgroundColor: '#f2f1f1',
+    },
+    bullet: {
+        display: 'inline-block',
+        margin: '0 2px',
+        transform: 'scale(0.8)',
+    },
+    title: {
+        fontSize: 14,
+    },
+    pos: {
+        marginBottom: 12,
+    },
+    summary: {
+        width: '22em',
+        wordWrap: 'word-wrap',
+    },
 });
 
 function IssuePanel(props)
@@ -32,7 +33,7 @@ function IssuePanel(props)
     const bull = <span className={classes.bullet}>•</span>;
 
     return (
-        <Card className={classes.card}>
+        <Card className={classes.card} raised={true}>
             <CardContent>
                 <Typography className={classes.title} color="textSecondary" gutterBottom>
                     {props.issue.issueType}
@@ -51,10 +52,19 @@ function IssuePanel(props)
                 </div>
             </CardContent>
             <CardActions>
-                <Button size="small">Learn More</Button>
+                <Button size="small" href={issueLink(props.issue)} target='_blank'>
+                    Learn More
+                </Button>
             </CardActions>
         </Card>
     );
+
+    function issueLink(issue)
+    {
+        const m = issue.self.match(/(http.?):\/\/([^/]+).*/);
+        console.log(m ? m[1] + '://' + m[2] + '/browse/' + issue.key : '');
+        return m ? m[1] + '://' + m[2] + '/browse/' + issue.key : '';
+    }
 }
 
 export default IssuePanel;
