@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
       card: {
-              minWidth: 275,
+              minWidth: 300,
             },
       bullet: {
               display: 'inline-block',
@@ -21,14 +21,13 @@ const useStyles = makeStyles({
               marginBottom: 12,
             },
       summary: {
-          width: '30em',
+          width: '22em',
           wordWrap: 'word-wrap',
       },
 });
 
 function IssuePanel(props)
 {
-    console.log('in subcomponent', props.issue);
     const classes = useStyles();
     const bull = <span className={classes.bullet}>•</span>;
 
@@ -47,10 +46,7 @@ function IssuePanel(props)
                 </Typography>
                 <div className={classes.summary}>
                     <Typography variant="body2" component="p">
-                        As a developer, I want to see work-distribution
-                        in a story more clearly so than I can have a
-                        better and more instantly feeling of the progress
-                        and objectivitie
+                        {props.issue.summary}
                     </Typography>
                 </div>
             </CardContent>
