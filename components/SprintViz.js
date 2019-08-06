@@ -17,7 +17,7 @@ function SprintViz()
     var graph = null;
 
     const [issue, setIssue] = useState(null);
-    const width = 800, height = 600;
+    const width = 1200, height = 680;
 
     extend(SprintViz, new eventEmitter());
     SprintViz.on('issueSelected', (issue) => {
@@ -48,15 +48,15 @@ function SprintViz()
                 .container {
                     padding-left: 5px;
                     padding-top: 5px;
+                    display: flex;
+                    justify-content: space-between;
                 }
                 #issuesgraph {
-                    display: inline-block;
                     vertical-align: top;
                 }
                 #issuepanel {
-                    display: inline-block;
                     vertical-align: top;
-                    margin-left: 20px;
+                    margin-right: 20px;
                 }
             `}</style>
         </div>
@@ -221,9 +221,10 @@ function SprintViz()
                     .attr('y', d => ly(d.key) + 2)
                     .style('text-anchor', 'start')
                     .style('alignment-baseline', 'hanging')
-                    .style('font-style', 'italic')
+                    .style('font-family', 'Raleway')
                     .style('font-weight', 'bold')
                     .style('font-size', '12px')
+                    .style('fill', '#fff')
                     .text(d => d.displayName);
         }
     }
