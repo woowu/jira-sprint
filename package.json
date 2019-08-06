@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next -p 3210",
+    "dev": "next -p 3210 --hostname 0.0.0.0",
     "build": "next build",
-    "start": "next start -p 3210"
+    "start": "next start -p 3210 --hostname 0.0.0.0"
   },
   "keywords": [],
   "author": "",
