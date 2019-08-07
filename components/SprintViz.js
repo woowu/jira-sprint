@@ -5,7 +5,7 @@ import extend from 'extend';
 import jira from '../lib/jira';
 import IssuePanel from './IssuePanel';
 
-function SprintViz()
+function SprintViz(props)
 {
     const issuesGraphId = 'issuesgraph';
     const issuePanelId = 'issuepanel';
@@ -25,10 +25,14 @@ function SprintViz()
 
     useEffect(() => {
         d3.select(`#${issuesGraphId} > *`).remove();
-        loadGraph((err, g) => {
+        loadGraph(props.sprintName, (err, g) => {
             graph = g;
             if (err) return console.error(err);
             draw(graph, {width, height});
+            props.onSprintLoaded({
+                prjName: g.projectName,
+                sprintName: props.sprintName,
+            });
         });
     }, [graph]);
 
@@ -78,12 +82,12 @@ function SprintViz()
         return {host, proto, user, password};
     }
 
-    function loadGraph(cb)
+    function loadGraph(sprintName, cb)
     {
         const {host, proto, user, password} = jiraConnParams();
         console.log('jira host ' + host);
         const store = jira(host, {proto, user, password});
-        store.sprintGraph('Sprint 11', cb);
+        store.sprintGraph(sprintName, cb);
     }
 
     function draw(graph, options, cb)
@@ -102,7 +106,7 @@ function SprintViz()
         const assigneeColorScale = d3.scaleOrdinal(d3.schemeBrBG[10])
             .domain(d3.extent(graph.issues, i => i.assignee.key));
         const radiusScale = d3.scaleSqrt()
-            .range([2, 80])
+            .range([5, 100])
             .domain([0, graph.issues.reduce((max, i) =>
                 i.remainedWork() > max ? i.remainedWork() : max, 0)]);
 
@@ -114,7 +118,7 @@ function SprintViz()
         const g = svg.append('g')
             .attr('transform', `translate(${margin.left}, ${margin.top})`);
         d3.forceSimulation(graph.issues)
-            .force('link', d3.forceLink(graph.links)
+            .force('gravity', d3.forceLink(graph.links)
                 .id(d => d.key)
             )
             .force('X', d3.forceX(d => w/2))
@@ -129,11 +133,11 @@ function SprintViz()
             .on('tick', ticked)
             .on('end', () => SprintViz.emit('end'));
 
-        const link = g.selectAll("line")
+        const line = g.selectAll("line")
             .data(graph.links)
             .enter().append("line")
             .style('stroke', '#999');
-        const node = g.selectAll("circle")
+        const bubble = g.selectAll("circle")
             .data(graph.issues)
             .enter().append("circle")
             .attr('cx', w/2)
@@ -151,14 +155,14 @@ function SprintViz()
 
         function ticked()
         {
-            node.attr("cx", d => d.x = Math.max(
+            bubble.attr("cx", d => d.x = Math.max(
                     issueRadius(d),
                     Math.min(w - issueRadius(d), d.x)))
                 .attr("cy", d => d.y = Math.max(
                     issueRadius(d),
                     Math.min(h - issueRadius(d), d.y)));
 
-            link.attr("x1", d => d.source.x)
+            line.attr("x1", d => d.source.x)
                 .attr("y1", d => d.source.y)
                 .attr("x2", d => d.target.x)
                 .attr("y2", d => d.target.y);
