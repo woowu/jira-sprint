@@ -20,10 +20,7 @@ function SprintViz()
     const width = 1200, height = 680;
 
     extend(SprintViz, new eventEmitter());
-    SprintViz.on('issueSelected', (issue) => {
-        console.log('issue clicked');
-        setIssue(issue);
-    });
+    SprintViz.on('issueSelected', issue => setIssue(issue));
     SprintViz.on('end', () => {console.log('draw ended');});
 
     useEffect(() => {
@@ -107,7 +104,7 @@ function SprintViz()
         const radiusScale = d3.scaleSqrt()
             .range([2, 80])
             .domain([0, graph.issues.reduce((max, i) =>
-                i.size() > max ? i.size() : max, 0)]);
+                i.remainedWork() > max ? i.remainedWork() : max, 0)]);
 
         console.log('start drawing');
 
@@ -124,7 +121,7 @@ function SprintViz()
             .force('Y', d3.forceY(d => h/2))
             .force('charge', d3.forceManyBody()
                 .strength((d, index) => index == 0
-                    ? -1 * radiusScale(d.size()) * 20
+                    ? -1 * radiusScale(d.remainedWork()) * 20
                     : -issueRadius(d) * 20))
             .force('collide', d3.forceCollide().strength(.1)
                 .radius(d => issueRadius(d) + 5)
@@ -142,10 +139,13 @@ function SprintViz()
             .attr('cx', w/2)
             .attr('cy', h/2)
             .attr("r", issueRadius)
-            .style("fill", d => assigneeColorScale(d.assignee.key))
+            .style("fill", d => {
+                d.color = assigneeColorScale(d.assignee.key);
+                return d.color;
+            })
             .style("stroke", d => d3.rgb(assigneeColorScale(d.assignee.key))
                 .darker())
-            .on('click', (d) => SprintViz.emit('issueSelected', d));
+            .on('click', d => SprintViz.emit('issueSelected', d));
 
         assigneeLegend();
 
@@ -166,7 +166,7 @@ function SprintViz()
 
         function issueRadius(i)
         {
-            return radiusScale(Math.abs(i.size()));
+            return radiusScale(Math.abs(i.remainedWork()));
         }
 
         function getAssignees(issues)
