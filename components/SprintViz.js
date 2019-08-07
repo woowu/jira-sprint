@@ -106,13 +106,8 @@ function SprintViz()
             .domain(d3.extent(graph.issues, i => i.assignee.key));
         const radiusScale = d3.scaleSqrt()
             .range([2, 80])
-            .domain([0, graph.issues.reduce((max, value) =>
-                value.work > max ? value.work : max, 0)]);
-        /*
-        const distanceScale = d3.scaleLinear()
-            .range([20, 80])
-            .domain(d3.extent(graph.links, l => l.distance));
-        */
+            .domain([0, graph.issues.reduce((max, i) =>
+                i.size() > max ? i.size() : max, 0)]);
 
         console.log('start drawing');
 
@@ -124,14 +119,12 @@ function SprintViz()
         d3.forceSimulation(graph.issues)
             .force('link', d3.forceLink(graph.links)
                 .id(d => d.key)
-                //.distance(l => distanceScale(l.distance))
-                //.strength(2)
             )
             .force('X', d3.forceX(d => w/2))
             .force('Y', d3.forceY(d => h/2))
             .force('charge', d3.forceManyBody()
                 .strength((d, index) => index == 0
-                    ? -1 * radiusScale(d.work) * 20
+                    ? -1 * radiusScale(d.size()) * 20
                     : -issueRadius(d) * 20))
             .force('collide', d3.forceCollide().strength(.1)
                 .radius(d => issueRadius(d) + 5)
@@ -173,7 +166,7 @@ function SprintViz()
 
         function issueRadius(i)
         {
-            return radiusScale(Math.abs(i.work - i .workDelegated));
+            return radiusScale(Math.abs(i.size()));
         }
 
         function getAssignees(issues)
